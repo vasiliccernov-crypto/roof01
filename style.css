@@ -3,127 +3,198 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f7f9fa; 
-    color: #1f2329; 
-    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
-    width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Сетки */
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+/* Шапка */
+.header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #222;
+}
+
+.logo span {
+    color: #ffcc00;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+}
+
+.phone a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Главный баннер (HERO) */
+.hero {
+    position: relative;
+    /* Подключаем картинку напрямую, так как папки нет */
+    background: url('main-bg.jpg') no-repeat center center/cover;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Красивое темное затемнение */
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    background: #ffcc00;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
 
 /* Кнопки */
 .btn {
     display: inline-block;
-    padding: 13px 28px;
-    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 4px;
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: none;
-    text-align: center;
+    font-weight: 700;
+    transition: 0.3s;
 }
-.btn-primary { 
-    background-color: #FFCC00 !important; 
-    color: #1f2329 !important; 
-}
-.btn-primary:hover { 
-    background-color: #E6B800 !important; 
-    transform: translateY(-1px); 
-}
-.btn-secondary { 
-    background-color: rgba(255, 255, 255, 0.1); 
-    color: #ffffff; 
-    border: 2px solid #ffffff; 
-}
-.btn-secondary:hover { 
-    background-color: #ffffff; 
-    color: #1f2329; 
-}
-.full-width { width: 100%; }
 
-/* Заголовки */
-.section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 40px; color: #1f2329; letter-spacing: -0.5px; }
-.section-subtitle { display: block; text-align: center; color: #5e6670; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; }
-
-/* Шапка */
-.header { background: #ffffff; padding: 15px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.06); }
-.header-flex { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.4rem; font-weight: 800; color: #1f2329; text-transform: uppercase; letter-spacing: -0.5px; }
-.logo span { 
-    background-color: #FFCC00 !important; 
-    color: #1f2329; 
-    padding: 2px 6px; 
-    border-radius: 4px; 
-    margin-left: 4px; 
+.btn-primary {
+    background: #ffcc00;
+    color: #000;
+    margin-right: 15px;
 }
-.nav a { color: #1f2329; text-decoration: none; margin: 0 12px; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
-.nav a:hover { color: #E6B800; }
-.phone { text-align: right; }
-.phone-label { display: block; font-size: 0.7rem; color: #5e6670; font-weight: 600; text-transform: uppercase; }
-.phone a { color: #1f2329; font-weight: 800; text-decoration: none; font-size: 1.15rem; }
 
+.btn-primary:hover {
+    background: #e6b800;
+}
 
-* Главный баннер */
-.hero { 
-    position: relative;
-    background: url('main-bg.jpg') no-repeat center center/cover;
-    height: 60vh;
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Плавающие кнопки справа внизу */
+.fixed-actions-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.action-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.hero-overlay { 
-    position: absolute; 
-    top:0; left:0; width:100%; height:100%; 
-    background: rgba(31, 35, 41, 0.6); 
-}
-.hero-content { position: relative; z-index: 2; max-width: 550px; }
-.hero h1 { font-size: 3rem; line-height: 1.15; font-weight: 800; color: #ffffff; margin-bottom: 12px; text-transform: uppercase; }
-.hero p { font-size: 1.1rem; color: #e2e4e7; margin-bottom: 25px; font-weight: 500; }
-.badge { 
-    display: inline-block; 
-    background-color: #FFCC00 !important; 
-    color: #1f2329; 
-    padding: 4px 10px; 
-    font-weight: 700; 
-    font-size: 0.75rem; 
-    border-radius: 4px; 
-    margin-bottom: 12px; 
-    text-transform: uppercase; 
-}
-.hero-buttons { display: flex; gap: 10px; }
+.wa-btn { background: #25D366; }
+.call-btn { background: #ffcc00; }
 
-/* Статистика */
-.stats { background: #ffffff; padding: 35px 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
-.stat-card { text-align: center; border-right: 1px solid rgba(0,0,0,0.06); }
-.stat-card:last-child { border-right: none; }
-.stat-card h3 { 
-    font-size: 2rem; 
-    color: #1f2329; 
-    font-weight: 800; 
-    background: linear-gradient(180deg, transparent 65%, #FFCC00 35%); 
-    display: inline-block; 
-    padding: 0 4px; 
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .nav.active { display: flex; }
+    .nav a { margin: 10px 0; }
+    .menu-toggle { display: block; }
+    .phone { display: none; }
+    .hero h1 { font-size: 2rem; }
 }
-.stat-card p { color: #5e6670; font-size: 0.9rem; font-weight: 600; margin-top: 4px; }
-
 /* Карточки услуг */
 .services { padding: 70px 0; }
 .card { background: #ffffff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
