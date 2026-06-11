@@ -214,7 +214,7 @@
     </div>
 </section>
 
-<!-- Скрипт: запускает видео при клике и ставит на паузу при повторном клике -->
+
 <script>
     document.querySelectorAll('.reels-item').forEach(item => {
         const video = item.querySelector('video');
@@ -222,7 +222,7 @@
         
         item.addEventListener('click', () => {
             if (video.paused) {
-                // Останавливаем все другие видео перед запуском нового
+                
                 document.querySelectorAll('video').forEach(v => v.pause());
                 document.querySelectorAll('.reels-play-btn').forEach(b => b.style.display = 'flex');
                 
@@ -394,6 +394,36 @@
             });
         });
     </script>
+
+                    <script>
+const form = document.querySelector('form'); 
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+        const formData = new FormData(form);
+        const name = formData.get('name') || 'Не указано';
+        const phone = formData.get('phone') || 'Не указано';
+        const text = `🚀 Новая заявка с сайта КровляПрофи01:\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
+        try {
+            const response = await fetch(`https://telegram.org{TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text })
+            });
+            if (response.ok) {
+                alert('Заявка успешно отправлена! Скоро мы с вами свяжемся.');
+                form.reset(); 
+            } else {
+                alert('Ошибка при отправке. Пожалуйста, позвоните нам.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Ошибка сети. Проверьте подключение к интернету.');
+        }
+    });
+}
+</script>
+                    
 </body>
 </html> 
    <!-- Минималистичный и незаметный подвал в самом низу -->
