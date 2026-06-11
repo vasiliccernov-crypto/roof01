@@ -83,7 +83,7 @@ body {
 * Главный баннер */
 .hero { 
     position: relative;
-    background: url('hero.jpg') no-repeat center center/cover;
+    background: url('main-bg.jpg') no-repeat center center/cover;
     height: 65vh;
     display: flex;
     align-items: center;
